@@ -404,6 +404,12 @@
   }
   function getLocalStorageUser() {
     try {
+      const pUid = localStorage.getItem("nomad_profile_uid");
+      const pName = localStorage.getItem("nomad_profile_name");
+      const pEmail = localStorage.getItem("nomad_profile_email");
+      if (pUid || pName) {
+        return { uid: pUid || "", displayName: pName || "", email: pEmail || "", doctorName: pName || "", medico: pName || "" };
+      }
       const raw = localStorage.getItem(APP_USER_STORAGE_KEY);
       if (!raw) return null;
       const data = JSON.parse(raw);
